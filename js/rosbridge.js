@@ -1,4 +1,4 @@
-var robot_IP = "localhost";
+var robot_IP = "oz-sat.wv.cc.cmu.edu";
 
 var ros;
 // Initialize ROS connection
@@ -44,7 +44,7 @@ volt_sub.subscribe(function(message){
     var percent = (avg/1000 - 11.8)/(13.1-11.8) * 100;
     avg = Math.round(avg*10/1000)/10;
     percent = Math.round(percent);
-    $('#battery_card .h5').text(avg + " V" + " - " + percent + " %");
+    $('#battery_card .h5').text(avg + " V" + " " + percent + "%");
     if(percent > 75){
         $('#battery_card .text-md').removeClass('text-danger').removeClass('text-warning').addClass('text-success');
         $('#battery_card').removeClass('border-left-danger').removeClass('border-left-warning').addClass('border-left-success');
