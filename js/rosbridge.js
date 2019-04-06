@@ -41,7 +41,7 @@ volt_sub.subscribe(function(message){
         sum += msg;
     }
     var avg = sum/4;
-    var percent = (avg/1000 - 12)/(14.7-12) * 100;
+    var percent = (avg/1000 - 12)/(12.8-11.8) * 100;
     avg = Math.round(avg*10/1000)/10;
     percent = Math.round(percent);
     $('#battery_card .h5').text(avg + " V" + " - " + percent + " %");
