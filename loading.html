@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>DumplingBot Loading Interface</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Interface for Dumplingbot">
+    <meta name="author" content="Oliver Zhang">
+
+    <!-- Bootstrap CSS -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- Custom styles for this template-->
+    <link rel="stylesheet" href="css/sb-admin-2.css">
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> -->
+    <link href="vendor/fontawesome-free-5.8.1-web/css/all.min.css" rel="stylesheet" type="text/css">
+  </head>
+
+  <body class="bg-light">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+      <!-- Sidebar -->
+      <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
+        <hr class="sidebar-divider">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="delivery.html">
+            <i class="fas fa-5x fa-utensils"></i>
+            <span>Delivery</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="loading.html">
+            <i class="fas fa-truck-loading"></i>
+            <span>Loading</span></a>
+        </li>
+      </ul>
+
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+          <!-- Begin Page Content -->
+          <div class="container-fluid">
+            <div class="row">
+              <!-- Left Content Column -->
+              <div class="col-lg-6 mb-4 mt-2">
+                <!-- Content Row -->
+                <div class="row">
+                  <!-- Connection card -->
+                  <div class="col-xl-3 col-md-6">
+                    <div id="connection_card" class="card border-left-danger shadow h-100 py-0">
+                      <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                          <div class="col mr-2">
+                            <div class="text-md font-weight-bold text-danger text-uppercase mb-1">ROS-Bridge</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">NULL</div>
+                          </div>
+                          <div class="col-auto">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Battery Card-->
+                  <div class="col-xl-3 col-md-6">
+                    <div id="battery_card" class="card border-left-success shadow h-100 py-0">
+                      <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                          <div class="col mr-2">
+                            <div class="text-md font-weight-bold text-success text-uppercase mb-1">Battery</div>
+                            <div class="row no-gutters align-items-center">
+                              <div class="col-auto">
+                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">0 %</div>
+                              </div>
+                              <div class="col">
+                                <!-- <div class="progress progress-sm mr-2 mt-2"></div>
+                                  <div class="progress-bar bg-info" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div> -->
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-auto">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- State Card -->
+                  <div class="col-xl-3 col-md-6">
+                    <div id="state_card" class="card border-left-primary shadow h-100 py-0">
+                      <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                          <div class="col mr-2">
+                            <div class="text-md font-weight-bold text-primary text-uppercase mb-1">State</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">NULL</div>
+                          </div>
+                          <div class="col-auto">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Target Card -->
+                  <div class="col-xl-3 col-md-6">
+                    <div id="target_card" class="card border-left-info shadow h-100 py-0">
+                      <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                          <div class="col mr-2">
+                            <div class="text-md font-weight-bold text-info text-uppercase mb-1">Target</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">NULL</div>
+                          </div>
+                          <div class="col-auto">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Controls -->
+                  <div class="col-lg-6 mt-4">
+                    <button id="openTray" type="button" class="btn btn-primary btn-lg btn-block py-5" style="height:100%">
+                      <h1>Open Tray</h1>
+                    </button>
+                  </div>
+                  <div class="col-lg-6 mt-4">
+                    <button id="closeTray" type="button" class="btn btn-primary btn-lg btn-block py-5" style="height: 100%">
+                      <h1>Close Tray</h1>
+                    </button>
+                  </div>
+                  <div id="tableButton" class="col-lg-6 mt-2">
+                    <button type="button" class="btn btn-primary btn-lg btn-block py-5" data-toggle="modal" data-target="#tableModal" style="height: 100%">
+                      <h1><i class="fas fa-map-marker-alt"></i> <span>1</span></h1>
+                    </button>
+                  </div>
+                  <div class="col-lg-6 mt-2">
+                    <button id="itemButton" type="button" class="btn btn-primary btn-lg btn-block py-5" data-toggle="modal" data-target="#itemModal" style="height: 100%">
+                      <h1><i class="fas fa-pizza-slice"></i> <span class="pizza">0</span> 
+                       <i class="fas fa-coffee"></i> <span class="coffee">0</span>
+                       <i class="fas fa-ice-cream"></i> <span class="icecream">0</span></h1>
+                    </button>
+                  </div>
+                  
+                  <div class="col-lg-12 mt-2">
+                    <button id="add" type="button" class="btn btn-info btn-lg btn-block py-5" style="height: 100%">
+                      <h1>Add Job</h1>
+                    </button>
+                  </div>
+                  <div class="col-lg-6 mt-2">
+                    <button id="remove" type="button" class="btn btn-info btn-lg btn-block py-5" style="height: 100%">
+                      <h1>Remove Last</h1>
+                    </button>
+                  </div>
+                  <div class="col-lg-6 mt-2">
+                    <button id="clear" type="button" class="btn btn-info btn-lg btn-block py-5" style="height: 100%">
+                      <h1>Clear All</h1>
+                    </button>
+                  </div>
+                  <div class="col-lg-12 mt-2">
+                    <button id="send" type="button" class="btn btn-success btn-lg btn-block py-5" data-toggle="modal" data-target="#confirmModal" style="height: 100%">
+                      <h1>Send Robot</h1>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- Right content column -->
+              <div class="col-lg-6 mb-4 mt-2">
+                <div class="row">
+                  <div class="col-lg-12 mb-4">
+                    <button id="estop" type="button" class="btn btn-danger btn-lg btn-block py-3" style="height: 100%">
+                      <h1>Emergency Stop</h1>
+                    </button>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <!-- Destinations Card -->
+                    <div id="dest" class="card shadow mb-4">
+                      <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Destinations
+                        </h6>
+                      </div>
+                      <h1 class="text-center empty mt-4">No Jobs Yet</h1>
+                      <div class="card-body">
+                        <table class="table table-striped">
+                          <tbody>
+                          </tbody>
+                        </table> 
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+      </div>
+      <!-- End of Content Wrapper -->
+      <!-- Modals -->
+        <div class="modal fade" id="itemModal" tabindex="-1" role="dialog">
+          <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Item Selection</h5>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <button type="button" class="pizza btn btn-primary btn-lg btn-block my-2 py-3">
+                        <h1><i class="fas fa-pizza-slice fa-3x"></i></h1>
+                        <h1><i class="fas fa-times"></i> <b>0</b></h1>
+                      </button>
+                    </div>
+                    <div class="col-lg-4">
+                      <button type="button" class="coffee btn btn-primary btn-lg btn-block my-2 py-3">
+                        <h1><i class="fas fa-coffee fa-3x"></i></h1>
+                        <h1><i class="fas fa-times"></i> <b>0</b></h1>
+                      </button>
+                    </div>
+                    <div class="col-lg-4">
+                      <button type="button" class="icecream btn btn-primary btn-lg btn-block my-2 py-3">
+                        <h1><i class="fas fa-ice-cream fa-3x"></i></h1>
+                        <h1><i class="fas fa-times"></i> <b>0</b></h1>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="clear btn btn-lg btn-danger">Clear</button>
+                  <button type="button" class="btn btn-lg btn-primary" data-dismiss="modal">Confirm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="tableModal" tabindex="-1" role="dialog">
+          <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Table Selection</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <button id="t1" type="button" class="btn btn-primary btn-lg btn-block my-2 py-5" data-dismiss="modal">
+                        <h1>1</h1>
+                      </button>
+                      <button id="t2" type="button" class="btn btn-primary btn-lg btn-block my-2 py-5" data-dismiss="modal">
+                        <h1>2</h1>
+                      </button>
+                    </div>
+                    <div class="col-lg-4">
+                      <button id="t3" type="button" class="btn btn-primary btn-lg btn-block my-2 py-5" data-dismiss="modal">
+                        <h1>3</h1>
+                      </button>
+                      <button id="t4" type="button" class="btn btn-primary btn-lg btn-block my-2 py-5" data-dismiss="modal">
+                        <h1>4</h1>
+                      </button>
+                    </div>
+                    <div class="col-lg-4 align-self-center">
+                      <button id="t5" type="button" class="btn btn-primary btn-lg btn-block my-2 py-5" data-dismiss="modal">
+                        <h1>5</h1>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog">
+          <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirm the job list</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <table class="table table-striped">
+                  <tbody>
+                  </tbody>
+                </table> 
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-lg btn-secondary" data-dismiss="modal">Cancel</button>
+                  <button id="confirmed" type="button" class="btn btn-lg btn-primary" data-dismiss="modal">Confirm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!-- End of Page Wrapper -->
+    
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!--
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script src="https://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
+    <script src="https://static.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
+    <script src="https://static.robotwebtools.org/keyboardteleopjs/current/keyboardteleop.min.js"></script>
+    -->
+
+    <script src="js/jquery-3.3.1.slim.min.js"></script> 
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="js/roslib.min.js"></script>
+    <script src="js/eventemitter2.min.js"></script>
+
+    <script src="js/rosbridge.js"></script>
+    <script src="js/trayControl.js"></script>
+    <script src="js/loading.js"></script>
+  </body>
+</html>
