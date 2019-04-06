@@ -29,12 +29,13 @@ $ roscore
 Run all nodes needed to operate the robot.  
 To visualize videos, we need to run the webserver.
 ```
-rosrun web_video_server web_video_server
+$ rosrun web_video_server web_video_server
 ```
 Start the rosbridge server. By default this runs on port 9090.
 
 ```
-roslaunch rosbridge_server rosbridge_websocket.launch
+$ export ROS_IP=[rosbridge machine's ip]
+$ roslaunch rosbridge_server rosbridge_websocket.launch
 ```
 
 Now open `index.html` with a web browser.

@@ -40,8 +40,8 @@ volt_sub.subscribe(function(message){
         var msg = message.data[i];
         sum += msg;
     }
-    var avg = sum/4;
-    var percent = (avg/1000 - 12)/(12.8-11.8) * 100;
+    var avg = sum/len;
+    var percent = (avg/1000 - 11.8)/(13.1-11.8) * 100;
     avg = Math.round(avg*10/1000)/10;
     percent = Math.round(percent);
     $('#battery_card .h5').text(avg + " V" + " - " + percent + " %");
@@ -49,7 +49,7 @@ volt_sub.subscribe(function(message){
         $('#battery_card .text-md').removeClass('text-danger').removeClass('text-warning').addClass('text-success');
         $('#battery_card').removeClass('border-left-danger').removeClass('border-left-warning').addClass('border-left-success');
     }
-    else if (percent < 25){
+    else if (percent > 25){
         $('#battery_card .text-md').removeClass('text-danger').removeClass('text-success').addClass('text-warning');
         $('#battery_card').removeClass('border-left-danger').removeClass('border-left-success').addClass('border-left-warning');
     }
@@ -92,6 +92,7 @@ $("#estop").click(function(){
     });
 
     estop_pub.publish(msg);
+    alert("Emergency stop triggered!")
 });
 
 $("#start").click(function(){
@@ -99,5 +100,6 @@ $("#start").click(function(){
         data:true
     });
 
+    alert("Robot will be reset!")
     estop_pub.publish(msg);
 });

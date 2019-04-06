@@ -26,9 +26,11 @@ error_sub.subscribe(function(message){
     var data = message.data[4];
     if(data == 0){
         $('#openTray').attr("disabled", false);
+        $('#closeTray').attr("disabled", false);
     }
     else{
         $('#openTray').attr("disabled", true);
+        $('#closeTray').attr("disabled", true);
     }
 });
 
