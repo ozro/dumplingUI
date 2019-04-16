@@ -27,17 +27,17 @@
       <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
         <hr class="sidebar-divider">
         <li class="nav-item active">
-          <a class="nav-link" href="index.html">
+          <a class="dashboard-link nav-link" href="#">
             <i class="fas fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="delivery.html">
+          <a class="delivery-link nav-link" href="#">
             <i class="fas fa-5x fa-utensils"></i>
             <span>Delivery</span></a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="loading.html">
+          <a class="loading-link nav-link" href="#">
             <i class="fas fa-truck-loading"></i>
             <span>Loading</span></a>
         </li>
@@ -53,7 +53,7 @@
             <div class="row">
               <!-- Motor Content Column -->
               <div class="col-lg-8 mb-4">
-                <!-- Content Row -->
+                <!-- Status Row -->
                 <div class="row mt-2">
                   <!-- Connection card -->
                   <div class="col-xl-3 col-md-6 mb-4">
@@ -139,7 +139,7 @@
                   
                 </div>
                 <!-- Motor Content Row -->
-                <div class="row">
+                <div class="row dashboard-content">
                   <div class="col-lg-12 mb-2">
                     <!-- Motor Cards -->
                     <div class="row">
@@ -357,6 +357,65 @@
                     </div>
                   </div>
                 </div>
+                <div class="row control-content">
+                  <!-- Controls -->
+                  <div class="col-lg-6 mt-4">
+                    <button id="openTray" type="button" class="btn btn-primary btn-lg btn-block py-5" style="height:100%">
+                      <h1>Open Tray</h1>
+                    </button>
+                  </div>
+                  <div class="col-lg-6 mt-4">
+                    <button id="closeTray" type="button" class="btn btn-primary btn-lg btn-block py-5" style="height: 100%">
+                      <h1>Close Tray</h1>
+                    </button>
+                  </div>
+                </div>
+                <div class="row delivery-content">
+
+                  <!-- Call button-->
+                  <div class="col-lg-12 mt-4">
+                    <button id="call" type="button" class="btn btn-info btn-lg btn-block py-5" style="height: 100%">
+                      <h1><i class="fas fa-exclamation-circle"></i> Help</h1>
+                    </button>
+                  </div>
+
+                  <!-- Done button-->
+                  <div class="col-lg-12 mt-2">
+                    <button id="done" type="button" class="btn btn-success btn-lg btn-block py-5" style="height: 100%">
+                      <h1>Done</h1>
+                    </button>
+                  </div>
+                </div>
+                <div class="row loading-content">
+                  <div id="tableButton" class="col-lg-6 mt-2">
+                    <button type="button" class="btn btn-primary btn-lg btn-block py-5" data-toggle="modal" data-target="#tableModal" style="height: 100%">
+                      <h1><i class="fas fa-map-marker-alt"></i> <span>1</span></h1>
+                    </button>
+                  </div>
+                  <div class="col-lg-6 mt-2">
+                    <button id="itemButton" type="button" class="btn btn-primary btn-lg btn-block py-5" data-toggle="modal" data-target="#itemModal" style="height: 100%">
+                      <h1><i class="fas fa-pizza-slice"></i> <span class="pizza">0</span> 
+                       <i class="fas fa-coffee"></i> <span class="coffee">0</span>
+                       <i class="fas fa-ice-cream"></i> <span class="icecream">0</span></h1>
+                    </button>
+                  </div>
+                  
+                  <div class="col-lg-12 mt-2">
+                    <button id="add" type="button" class="btn btn-info btn-lg btn-block py-5" style="height: 100%">
+                      <h1>Add Job</h1>
+                    </button>
+                  </div>
+                  <div class="col-lg-6 mt-2">
+                    <button id="remove" type="button" class="btn btn-info btn-lg btn-block py-5" style="height: 100%">
+                      <h1>Remove Last</h1>
+                    </button>
+                  </div>
+                  <div class="col-lg-6 mt-2">
+                    <button id="clear" type="button" class="btn btn-info btn-lg btn-block py-5" style="height: 100%">
+                      <h1>Clear All</h1>
+                    </button>
+                  </div>
+                </div>
               </div>
               
               <!-- Right content column -->
@@ -373,7 +432,7 @@
                     </button>
                   </div>
                 </div>
-                <div class="row">
+                <div class="row dashboard-content">
                   <div class="col-lg-12">
                     <!-- Camera -->
                     <div id="camera" class="card shadow mb-4">
@@ -388,6 +447,61 @@
                     </div>
                   </div>
                 </div>
+                <div class="row delivery-content">
+                  <!-- Food Card -->
+                  <div class="col-lg-12">
+                    <div id="items" class="card shadow">
+                      <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Items
+                        </h6>
+                      </div>
+                      <div class="card-body py-5">
+                        <div class="text-center">
+                          <div class="container-fluid">
+                            <div class="row">
+                              <div class="col-12">
+                                <h1><i class="fas fa-pizza-slice fa-1x"></i></h1>
+                                <h1><i class="fas fa-times"></i><b> 0</b></h1>
+                              </div>
+                              <div class="col-12">
+                                <h1><i class="fas fa-coffee fa-1x"></i></h1>
+                                <h1><i class="fas fa-times"></i><b> 0</b></h1>
+                              </div>
+                              <div class="col-12">
+                                <h1><i class="fas fa-ice-cream fa-1x"></i></h1>
+                                <h1><i class="fas fa-times"></i><b> 0</b></h1>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row loading-content">
+                  <div class="col-lg-12">
+                    <!-- Destinations Card -->
+                    <div id="dest" class="card shadow mb-4">
+                      <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Destinations
+                        </h6>
+                      </div>
+                      <h1 class="text-center empty mt-4">No Jobs Yet</h1>
+                      <div class="card-body">
+                        <table class="table table-striped">
+                          <tbody>
+                          </tbody>
+                        </table> 
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-12 mt-2">
+                    <button id="send" type="button" class="btn btn-success btn-lg btn-block py-5" data-toggle="modal" data-target="#confirmModal" style="height: 100%">
+                      <h1>Send Robot</h1>
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -398,7 +512,108 @@
         <!-- End of Main Content -->
       </div>
       <!-- End of Content Wrapper -->
+      <div class="modal fade" id="itemModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Item Selection</h5>
 
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-lg-4">
+                    <button type="button" class="pizza btn btn-primary btn-lg btn-block my-2 py-3">
+                      <h1><i class="fas fa-pizza-slice fa-3x"></i></h1>
+                      <h1><i class="fas fa-times"></i> <b>0</b></h1>
+                    </button>
+                  </div>
+                  <div class="col-lg-4">
+                    <button type="button" class="coffee btn btn-primary btn-lg btn-block my-2 py-3">
+                      <h1><i class="fas fa-coffee fa-3x"></i></h1>
+                      <h1><i class="fas fa-times"></i> <b>0</b></h1>
+                    </button>
+                  </div>
+                  <div class="col-lg-4">
+                    <button type="button" class="icecream btn btn-primary btn-lg btn-block my-2 py-3">
+                      <h1><i class="fas fa-ice-cream fa-3x"></i></h1>
+                      <h1><i class="fas fa-times"></i> <b>0</b></h1>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="clear btn btn-lg btn-danger">Clear</button>
+                <button type="button" class="btn btn-lg btn-primary" data-dismiss="modal">Confirm</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="tableModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Table Selection</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-lg-4">
+                    <button id="t1" type="button" class="btn btn-primary btn-lg btn-block my-2 py-5" data-dismiss="modal">
+                      <h1>1</h1>
+                    </button>
+                    <button id="t2" type="button" class="btn btn-primary btn-lg btn-block my-2 py-5" data-dismiss="modal">
+                      <h1>2</h1>
+                    </button>
+                  </div>
+                  <div class="col-lg-4">
+                    <button id="t3" type="button" class="btn btn-primary btn-lg btn-block my-2 py-5" data-dismiss="modal">
+                      <h1>3</h1>
+                    </button>
+                    <button id="t4" type="button" class="btn btn-primary btn-lg btn-block my-2 py-5" data-dismiss="modal">
+                      <h1>4</h1>
+                    </button>
+                  </div>
+                  <div class="col-lg-4 align-self-center">
+                    <button id="t5" type="button" class="btn btn-primary btn-lg btn-block my-2 py-5" data-dismiss="modal">
+                      <h1>5</h1>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Confirm the job list</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <table class="table table-striped">
+                <tbody>
+                </tbody>
+              </table> 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-lg btn-secondary" data-dismiss="modal">Cancel</button>
+                <button id="confirmed" type="button" class="btn btn-lg btn-primary" data-dismiss="modal">Confirm</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <!-- End of Page Wrapper -->
     
@@ -417,10 +632,15 @@
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 
+    <script src="js/navigation.js"></script>
+
     <script src="js/roslib.min.js"></script>
     <script src="js/eventemitter2.min.js"></script>
-
     <script src="js/rosbridge.js"></script>
+
     <script src="js/dashboard.js"></script>
+    <script src="js/trayControl.js"></script>
+    <script src="js/delivery.js"></script>
+    <script src="js/loading.js"></script>
   </body>
 </html>

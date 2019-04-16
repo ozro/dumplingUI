@@ -1,6 +1,6 @@
 var robot_IP = "oz-sat.wv.cc.cmu.edu";
-
 var ros;
+
 // Initialize ROS connection
 console.log('Initializing connection to websocket at \"ws://\"' + robot_IP + ":9090\"");
 ros = new ROSLIB.Ros({url:"ws://" + robot_IP + ':9090'});
