@@ -133,7 +133,26 @@ function updateJobs(){
     $('#confirmModal tbody').html(rows);
 };
 
+var order_pub = new ROSLIB.Topic({
+    ros:ros,
+    name:'table_order',
+    messageType:'std_msgs/Int16MultiArray
+});
+
 //Send robot
 $('#confirmed').click(function(){
     trayVel.publish(closeVel);
+    done_pub.publish(done);
+
+    orders = [];
+
+    for(var i = 0; i < jobs.length; i++){
+        orders.push(jobs[i].table);
+    }
+
+    var order = new ROSLIB.Message({
+        data:orders
+    });
+
+    order_pub.publish(order);
 });

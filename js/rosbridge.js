@@ -24,8 +24,7 @@ ros.on('close',function(){
 });
 
 var volt_topic = "/motor_status/voltages";
-var target_topic = "/target";
-var state_topic = "/state";
+var state_topic = "/robot_state";
 
 var volt_sub = new ROSLIB.Topic({
     ros:ros,
@@ -63,28 +62,19 @@ volt_sub.subscribe(function(message){
 var state_sub = new ROSLIB.Topic({
     ros:ros,
     name:state_topic,
-    messageType:'std_msgs/String'
+    messageType:'executive_smach/smach_ros/robot_state'
 });
 
 state_sub.subscribe(function(message){
-    $('#state_card .h5').text(message.data);
-});
-
-var target_sub = new ROSLIB.Topic({
-    ros:ros,
-    name:target_topic,
-    messageType:'std_msgs/String'
-});
-
-target_sub.subscribe(function(message){
-    $('#target_card .h5').text(message.data);
+    $('#state_card .h5').text(message.state);
+    $('#target_card .h5').text(message.next_goal);
 });
 
 var estop_pub = new ROSLIB.Topic({
     ros:ros,
     name:'/motor_cmd/start',
     messageType:'std_msgs/Bool'
-})
+});
 
 $("#estop").click(function(){
     msg = new ROSLIB.Message({
