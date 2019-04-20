@@ -8,8 +8,6 @@ var temps_topic = "/motor_status/temps";
 var curr_topic = "/motor_status/currents";
 var volt_topic = "/motor_status/voltages";
 var enc_topic = "/motor_status/encoder_counts";
-var target_topic = "/target";
-var state_topic = "/state";
 
 $('#camera .text-primary').text("Feed: " + camera_topic);
 video = $('#camera img')[0];
@@ -136,24 +134,4 @@ enc_sub.subscribe(function(message){
         var msg = message.counts[i];
         $('#motor_status_'+i+" .encoder").text(msg);
     }
-});
-    
-var state_sub = new ROSLIB.Topic({
-    ros:ros,
-    name:state_topic,
-    messageType:'std_msgs/String'
-});
-
-state_sub.subscribe(function(message){
-    $('#state_card .h5').text(message.data);
-});
-
-var target_sub = new ROSLIB.Topic({
-    ros:ros,
-    name:target_topic,
-    messageType:'std_msgs/String'
-});
-
-target_sub.subscribe(function(message){
-    $('#target_card .h5').text(message.data);
 });

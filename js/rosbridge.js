@@ -1,4 +1,5 @@
-var robot_IP = "oz-sat.wv.cc.cmu.edu";
+//var robot_IP = "oz-sat.wv.cc.cmu.edu";
+var robot_IP = "128.237.242.181";
 var ros;
 
 // Initialize ROS connection
@@ -24,7 +25,7 @@ ros.on('close',function(){
 });
 
 var volt_topic = "/motor_status/voltages";
-var state_topic = "/robot_state";
+var state_topic = "robot_state";
 
 var volt_sub = new ROSLIB.Topic({
     ros:ros,
@@ -62,7 +63,7 @@ volt_sub.subscribe(function(message){
 var state_sub = new ROSLIB.Topic({
     ros:ros,
     name:state_topic,
-    messageType:'executive_smach/smach_ros/robot_state'
+    messageType:'smach_ros/robot_state'
 });
 
 state_sub.subscribe(function(message){

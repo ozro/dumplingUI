@@ -136,7 +136,7 @@ function updateJobs(){
 var order_pub = new ROSLIB.Topic({
     ros:ros,
     name:'table_order',
-    messageType:'std_msgs/Int16MultiArray
+    messageType:'std_msgs/Int16MultiArray'
 });
 
 //Send robot
