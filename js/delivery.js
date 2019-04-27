@@ -1,5 +1,20 @@
+var call_pub = new ROSLIB.Topic({
+    ros:ros,
+    name:'help_status',
+    messageType:'std_msgs/String'
+});
+
+var help = new ROSLIB.Message({
+    data:'help'
+});
+
 $("#call").click(function(){
-   alert("Help is on the way") 
+    msg = new ROSLIB.Message({
+        data:false
+    });
+    estop_pub.publish(msg);
+    call_pub.publish(help);
+    alert("Help is on the way") 
 });
 
 var done_pub = new ROSLIB.Topic({
