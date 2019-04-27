@@ -124,9 +124,9 @@ function updateJobs(){
     $.each(jobs, function(index, item){
         var row = '<tr>';
         row += '<td><h1><i class="fas fa-map-marker-alt"></i> ' + item.table + ' </h1></td>';
-        row += '<td><h1><i class="fas fa-pizza-slice"></i> ' + item.counts[0] + '</h1></td>';
-        row += '<td><h1><i class="fas fa-coffee"></i> ' + item.counts[1] + '</h1></td>';
-        row += '<td><h1><i class="fas fa-ice-cream"></i> ' + item.counts[2] + '</h1></td>';
+        row += '<td><h1><i class="fas">🥟</i> ' + item.counts[0] + '</h1></td>';
+        row += '<td><h1><i class="fas">🍚</i> ' + item.counts[1] + '</h1></td>';
+        row += '<td><h1><i class="fas">🍵</i> ' + item.counts[2] + '</h1></td>';
         rows += row;
     });
     $('#dest tbody').html(rows);
