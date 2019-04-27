@@ -149,6 +149,7 @@ $('#confirmed').click(function(){
     for(var i = 0; i < jobs.length; i++){
         orders.push(jobs[i].table);
     }
+    orders.push(0);
 
     var order = new ROSLIB.Message({
         data:orders

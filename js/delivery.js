@@ -14,7 +14,6 @@ $("#call").click(function(){
     });
     estop_pub.publish(msg);
     call_pub.publish(help);
-    alert("Help is on the way") 
 });
 
 var done_pub = new ROSLIB.Topic({

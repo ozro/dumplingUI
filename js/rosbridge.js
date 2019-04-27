@@ -1,6 +1,6 @@
-//var robot_IP = "oz-sat.wv.cc.cmu.edu";
+var robot_IP = "oz-sat.wv.cc.cmu.edu";
 //var robot_IP = "128.237.242.181";
-var robot_IP = "localhost";
+//var robot_IP = "localhost";
 var ros;
 
 // Initialize ROS connection
@@ -27,6 +27,7 @@ ros.on('close',function(){
 
 var volt_topic = "/motor_status/voltages";
 var state_topic = "robot_state";
+var help_topic = "help_status";
 
 var volt_sub = new ROSLIB.Topic({
     ros:ros,
@@ -70,6 +71,12 @@ var state_sub = new ROSLIB.Topic({
 state_sub.subscribe(function(message){
     $('#state_card .h5').text(message.state);
     $('#target_card .h5').text(message.next_goal);
+    var job = jobs.find(function(element){
+        return element.table == message.next_goal;
+    });
+    $('#items b').each(function(index){
+        $(this).text(job.counts[index]);
+    });
 });
 
 var estop_pub = new ROSLIB.Topic({
@@ -94,4 +101,16 @@ $("#start").click(function(){
 
     alert("Robot will be reset!")
     estop_pub.publish(msg);
+});
+
+var help_sub = new ROSLIB.Topic({
+    ros:ros,
+    name:help_topic,
+    messageType:'std_msgs/String'
+});
+
+help_sub.subscribe(function(message){
+    console.log("help requested");
+    document.getElementById("alert_sound").play()
+    alert("Help requested!")
 });
