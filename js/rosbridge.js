@@ -70,6 +70,26 @@ var state_sub = new ROSLIB.Topic({
 
 state_sub.subscribe(function(message){
     $('#state_card .h5').text(message.state);
+    switch(message.state){
+        case "AtBase":
+            hideDashboard(true);
+            hideControls(false);
+            hideDelivery(true);
+            hideLoading(false);
+            break;
+        case "InTransit":
+            hideDashboard(false);
+            hideControls(true);
+            hideDelivery(true);
+            hideLoading(true);
+            break;
+        case "AtTable":
+            hideDashboard(true);
+            hideControls(false);
+            hideDelivery(false);
+            hideLoading(true);
+            break;
+    }
     $('#target_card .h5').text(message.next_goal);
     var job = jobs.find(function(element){
         return element.table == message.next_goal;
@@ -91,7 +111,6 @@ $("#estop").click(function(){
     });
 
     estop_pub.publish(msg);
-    alert("Emergency stop triggered!")
 });
 
 $("#start").click(function(){
@@ -111,6 +130,21 @@ var help_sub = new ROSLIB.Topic({
 
 help_sub.subscribe(function(message){
     console.log("help requested");
-    document.getElementById("alert_sound").play()
-    alert("Help requested!")
+    alert("Help Requested!")
+});
+
+var e_sub = new ROSLIB.Topic({
+    ros:ros,
+    name:'/motor_cmd/start',
+    messageType:'std_msgs/Bool'
+});
+
+e_sub.subscribe(function(message){
+    if(message.data){
+        console.log("Robot started!");
+    }
+    else{
+        console.log("Emergency stop triggered!");
+        document.getElementById("alert_sound").play()
+    }
 });
