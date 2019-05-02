@@ -1,4 +1,5 @@
-var robot_IP = "oz-sat.wv.cc.cmu.edu";
+var robot_IP = "jessyxie.wv.cc.cmu.edu";
+//var robot_IP = "oz-sat.wv.cc.cmu.edu";
 //var robot_IP = "128.237.242.181";
 //var robot_IP = "localhost";
 var ros;
