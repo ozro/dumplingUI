@@ -3,6 +3,7 @@ var robot_IP = "jessyxie.wv.cc.cmu.edu";
 //var robot_IP = "128.237.242.181";
 //var robot_IP = "localhost";
 var ros;
+var robotState = 0;
 
 // Initialize ROS connection
 console.log('Initializing connection to websocket at \"ws://\"' + robot_IP + ":9090\"");
@@ -73,22 +74,32 @@ state_sub.subscribe(function(message){
     $('#state_card .h5').text(message.state);
     switch(message.state){
         case "AtBase":
-            hideDashboard(true);
-            hideControls(false);
-            hideDelivery(true);
-            hideLoading(false);
+            if(robotState != 1){
+                robotState == 1;
+                hideDashboard(true);
+                hideControls(false);
+                hideDelivery(true);
+                hideLoading(false);
+            }
             break;
         case "InTransit":
-            hideDashboard(false);
-            hideControls(true);
-            hideDelivery(true);
-            hideLoading(true);
+            if(robotState != 2){
+                robotState == 2;
+                hideDashboard(false);
+                hideControls(true);
+                hideDelivery(true);
+                hideLoading(true);
+            }
             break;
         case "AtTable":
-            hideDashboard(true);
-            hideControls(false);
-            hideDelivery(false);
-            hideLoading(true);
+            if(robotState != 3){
+                document.getElementById("alert_sound").play()
+                robotState == 3;
+                hideDashboard(true);
+                hideControls(false);
+                hideDelivery(false);
+                hideLoading(true);
+            }
             break;
     }
     $('#target_card .h5').text(message.next_goal);
